@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>ROCK PAPER SCISSOR</title>
+  </head>
+  <body>
+    <main>
+      <h1>Let's Play ROCK PAPER SCISSOR</h1>
+      <div class="display-screen">
+        <!-- computer-side -->
+        <div class="computer-part both-side">
+          <p>Computer</p>
+          <div class="img-block" id="img-comp"></div>
+
+          <p id="comp-score">Score:</p>
+        </div>
+        <!-- player-side -->
+        <div class="player-part both-side">
+          <p>Player</p>
+          <div class="img-block" id="img-player"></div>
+          <p id="user-score">Score:</p>
+        </div>
+        <!-- result-img -->
+        <div class="result-img"></div>
+      </div>
+      <!-- Play Buttons UI -->
+      <div class="play-buttons">
+        <button class="btn-play">
+          <div class="img-container">
+            <img src="./images/rock-paper-scissors.png" class="rock-btn-play" />
+          </div>
+          Rock
+        </button>
+        <button class="btn-play">
+          <div class="img-container">
+            <img
+              src="./images/rock-paper-scissors.png"
+              class="paper-btn-play"
+              alt=""
+            />
+          </div>
+          Paper
+        </button>
+        <button class="btn-play">
+          <div class="img-container">
+            <img
+              src="./images/rock-paper-scissors.png"
+              class="scissor-btn-play"
+              alt=""
+            />
+          </div>
+          Scissor
+        </button>
+      </div>
+    </main>
+    <script src="./script.js"></script>
+  </body>
+</html>
