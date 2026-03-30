@@ -10,6 +10,9 @@
 <a href="https://www.flaticon.com/free-icons/rock-paper-scissors" title="rock paper scissors icons">Rock paper scissors icons created by Freepik - Flaticon</a>
 */
 
+/* music
+Music by <a href="https://pixabay.com/users/viacheslavstarostin-50153119/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=471936">Viacheslav Starostin</a> from <a href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=471936">Pixabay</a> */
+
 :root {
   --button-background: #f4a261;
   --button-border: #e9c46a;
@@ -23,6 +26,7 @@ body {
 }
 
 main {
+  position: relative;
   border-radius: 20px;
   background-color: white;
   width: 85%;
@@ -34,6 +38,26 @@ main {
 
 main h1 {
   text-align: center;
+}
+
+#audio-block {
+  position: absolute;
+  right: 38px;
+  top: 10px;
+  background-image: url("./images/volume-solid.png");
+  width: 49px;
+  aspect-ratio: 1 / 1;
+  background-size: 66%;
+  background-repeat: no-repeat;
+  background-position: center;
+  filter: invert(1);
+  cursor: pointer;
+}
+
+#audio-block audio {
+  pointer-events: none;
+  cursor: none;
+  visibility: hidden;
 }
 
 .display-screen {
@@ -58,6 +82,7 @@ main h1 {
   justify-content: center;
   align-items: center;
 }
+
 .player-part {
   display: flex;
   flex-direction: column;
@@ -91,10 +116,8 @@ main h1 {
   width: 150px;
   outline: none;
   border: 2px solid var(--button-border);
-  background: linear-gradient(
-    var(--button-background) 15px,
-    var(--button-border) 77px
-  );
+  background: linear-gradient(var(--button-background) 15px,
+      var(--button-border) 77px);
   padding: 5px;
   border-radius: 20px;
   font-weight: 700;
@@ -115,12 +138,31 @@ main h1 {
 .rock-btn-play {
   transform: scale(2.5) translate(9px, -3px);
 }
+
 .paper-btn-play {
   transform: scale(2.2) translate(0px, 7px);
 }
+
 .scissor-btn-play {
   transform: scale(3) translate(-9.3px, 2px);
 }
+
+.btn-play-result {
+  display: none;
+  cursor: pointer;
+  color: white;
+  text-align: center;
+  font-size: 25px;
+  width: 50%;
+  outline: none;
+  border: 2px solid var(--button-border);
+  background: linear-gradient(var(--button-background) 15px,
+      var(--button-border) 77px);
+  padding: 5px;
+  border-radius: 20px;
+  font-weight: 700;
+}
+
 
 .img-block {
   width: 200px;

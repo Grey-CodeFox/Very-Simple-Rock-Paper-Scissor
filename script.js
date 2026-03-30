@@ -71,41 +71,63 @@ function playerHand(e) {
       break
   }
 
-  //   WINNING CONDITION CODE
+  //   WINNING CONDITION CODE AND COLOR BOX
+  if (internalRound < computerSquare.length) {
+    if (
+      (currentPlayerHand === 'rock' && allHands[computerHand] === 'scissor') ||
+      (currentPlayerHand === 'paper' && allHands[computerHand] === 'rock') ||
+      (currentPlayerHand === 'scissor' && allHands[computerHand] === 'paper')
+    ) {
+      computerSquare[internalRound].style.backgroundColor = 'red'
+      userSquare[internalRound].style.backgroundColor = 'green'
+      currentRound += 1
+      playerScore += 1
+      internalRound += 1
+      textResultImage.textContent = `ROUND ${currentRound} : PLAYER WINS`
+      userDisplay.textContent = 'Score: ' + playerScore
+    } else if (
+      (allHands[computerHand] === 'rock' && currentPlayerHand === 'scissor') ||
+      (allHands[computerHand] === 'paper' && currentPlayerHand === 'rock') ||
+      (allHands[computerHand] === 'scissor' && currentPlayerHand === 'paper')
+    ) {
+      computerSquare[internalRound].style.backgroundColor = 'green'
+      userSquare[internalRound].style.backgroundColor = 'red'
+      currentRound += 1
+      computerScore += 1
+      internalRound += 1
+      textResultImage.textContent = `ROUND ${currentRound} : COMPUTER WINS`
+      compDisplay.textContent = 'Score: ' + computerScore
+    } else {
+      currentRound += 1
+      textResultImage.textContent = `ROUND ${currentRound} : TIED`
+    }
 
-  if (
-    (currentPlayerHand === 'rock' && allHands[computerHand] === 'scissor') ||
-    (currentPlayerHand === 'paper' && allHands[computerHand] === 'rock') ||
-    (currentPlayerHand === 'scissor' && allHands[computerHand] === 'paper')
-  ) {
-    computerSquare[internalRound].style.backgroundColor = 'red'
-    userSquare[internalRound].style.backgroundColor = 'green'
-    currentRound += 1
-    textResultImage.textContent = `ROUND ${currentRound} : PLAYER WINS`
-    playerScore += 1
-    userDisplay.textContent = 'Score: ' + playerScore
-    internalRound += 1
-  } else if (
-    (allHands[computerHand] === 'rock' && currentPlayerHand === 'scissor') ||
-    (allHands[computerHand] === 'paper' && currentPlayerHand === 'rock') ||
-    (allHands[computerHand] === 'scissor' && currentPlayerHand === 'paper')
-  ) {
-    currentRound += 1
-    textResultImage.textContent = `ROUND ${currentRound} : COMPUTER WINS`
-    computerScore += 1
-    compDisplay.textContent = 'Score: ' + computerScore
-    computerSquare[internalRound].style.backgroundColor = 'green'
-    userSquare[internalRound].style.backgroundColor = 'red'
-    internalRound += 1
-  } else {
-    currentRound += 1
-    textResultImage.textContent = `ROUND ${currentRound} : TIED`
+    imageResult(currentPlayerHand, computerHand, allHands)
   }
 
-  // PROECESSING WIN IMAGES
-  imageResult(currentPlayerHand, computerHand, allHands)
+  if (internalRound === computerSquare.length) {
+    let normalBtnPlay = document.querySelectorAll('.btn-play')
+    let resultBtnPlay = document.querySelector('.btn-play-result')
+
+    normalBtnPlay.forEach((element) => {
+      element.style.display = 'none'
+    })
+
+    resultBtnPlay.style.display = 'block'
+
+    resultBtnPlay.addEventListener('click', () => {
+      if (playerScore > computerScore) {
+        alert('PLayer won')
+      } else if (playerScore < computerScore) {
+        alert('Computer Won')
+      } else if (playerScore === computerScore) {
+        alert("It's a tie")
+      }
+    })
+  }
 }
 
+// PROECESSING WIN IMAGES
 function imageResult(currentPlayerHand, computerHand, allHands) {
   if (
     (currentPlayerHand === 'rock' && allHands[computerHand] === 'scissor') ||
@@ -134,3 +156,17 @@ function imageResult(currentPlayerHand, computerHand, allHands) {
     resultImage.style.backgroundSize = '63%'
   }
 }
+
+// audio control
+let audioBlock = document.getElementById('audio-block')
+let audioSource = document.getElementById('audio-source')
+
+audioBlock.addEventListener('click', () => {
+  // audioSource.muted = false by default and if true it MUTES AUDIO
+  audioSource.muted = !audioSource.muted
+  if (audioSource.muted) {
+    audioBlock.style.backgroundImage = 'url("./images/volume-xmark-solid.png")'
+  } else {
+    audioBlock.style.backgroundImage = 'url("./images/volume-solid.png")'
+  }
+})
