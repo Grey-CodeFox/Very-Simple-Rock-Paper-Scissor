@@ -170,3 +170,8 @@ audioBlock.addEventListener('click', () => {
     audioBlock.style.backgroundImage = 'url("./images/volume-solid.png")'
   }
 })
+window.addEventListener("click", () => {
+  const audio = document.getElementById("audio-source");
+  audio.play();
+}, { once: true });
+
