@@ -9,9 +9,8 @@ const scissorAlone = 'url("./images/scissor-removebg-preview.png")'
 const celebrationGif = "url('./images/celebration.gif')"
 
 const allHands = ['rock', 'paper', 'scissor']
-
-const rockPaperScissor =
-  "url('./images/rock-paper-scissor-removebg-preview.png')"
+const defaultImage = "url('./images/fight-begins.png')"
+const rockPaperScissor = "url('./images/rock-paper-scissor-removebg-preview.png')"
 
 let playerScore = 0
 let computerScore = 0
@@ -31,6 +30,7 @@ const playerImage = document.getElementById('img-player')
 const computerImage = document.getElementById('img-comp')
 
 const resultImage = document.querySelector('.result-img')
+resultImage.style.backgroundImage = defaultImage
 let textResultImage = document.querySelector('.result-img p')
 
 const computerSquare = document.querySelectorAll(
